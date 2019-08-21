@@ -53,9 +53,9 @@ fn sum_even_fib(limit: u32) -> Integer {
     sum
 }
 
-// #2 Find intersaction between 2 sorted arrays and return an array of unique numbers
+// #2 Find the intersection between 2 sorted arrays and return an array of unique numbers
 #[allow(dead_code)]
-fn intersact_arrays(a1: &[i32], a2: &[i32]) -> Vec<i32> {
+fn intersect_arrays(a1: &[i32], a2: &[i32]) -> Vec<i32> {
     let mut i = 0;
     let mut j = 0;
 
@@ -134,29 +134,29 @@ mod tests {
     }
 
     #[test]
-    fn test_intersact_arrays() {
+    fn test_intersect_arrays() {
         let a1 = [1, 1, 1, 2, 3, 3, 3, 4, 4, 5, 5, 5];
         let a2 = [2, 2, 2, 3, 3, 4, 4, 6, 6, 6, 6, 7, 7, 7, 7, 7];
         let expected = [2, 3, 4];
-        let actual = intersact_arrays(&a1, &a2);
+        let actual = intersect_arrays(&a1, &a2);
         assert_eq!(&actual[..], &expected[..]);
 
         let a1 = [];
         let a2 = [2, 2, 2, 3, 3, 4, 4, 6, 6, 6, 6, 7, 7, 7, 7, 7];
         let expected: [i32; 0] = [];
-        let actual = intersact_arrays(&a1, &a2);
+        let actual = intersect_arrays(&a1, &a2);
         assert_eq!(&actual[..], &expected[..]);
 
         let a1 = [1, 1, 1, 1];
         let a2 = [1, 1, 1, 1];
         let expected = [1];
-        let actual = intersact_arrays(&a1, &a2);
+        let actual = intersect_arrays(&a1, &a2);
         assert_eq!(&actual[..], &expected[..]);
 
         let a1 = [];
         let a2 = [];
         let expected: [i32; 0] = [];
-        let actual = intersact_arrays(&a1, &a2);
+        let actual = intersect_arrays(&a1, &a2);
         assert_eq!(&actual[..], &expected[..]);
     }
 
