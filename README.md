@@ -3,7 +3,7 @@
 The solutions are divided into 3 files:
 
 - General => [main.rs](src/main.rs)
-- Python => [ipython notebook](src/Python Programming Tests.ipynb) or
+- Python => [ipython notebook](src/Python%20Programming%20Tests.ipynb) or
   [exported python source code](src/PythonProgrammingTests.py)
 - JavaScript => [question.js](src/question.js)
 
@@ -32,7 +32,8 @@ setting that up with `pipenv`. You can follow [pipenv
 doc](https://docs.pipenv.org/en/latest/install/#installing-pipenv) for the
 installation of pipenv if you don't have one installed.
 
-Once you have `pipenv`, run the following command to start the notebook server
+Once you have `pipenv` installed, run the following command to start the
+notebook server
 
 ```sh
 # Install dependencies, i.e. jupyter
@@ -42,10 +43,10 @@ $ pipenv install
 $ pipenv run jupyter notebook
 
 # Follow the instruction of the output to open the notebook and check the
-# solutions
+# solutions on the src/Python Programming Tests.ipynb file
 ```
 
-Or just open the [ipython notebook](src/Python Programming Tests.ipynb) file or
+Or just open the [ipython notebook](src/Python%20Programming%20Tests.ipynb) file or
 [exported python source code](src/PythonProgrammingTests.py) file to read the
 source codes.
 
@@ -56,4 +57,4 @@ Open the [index.html](src/index.html) file with your browser to check the
 output. The implementation details is in the [question.js](src/question.js)
 file.
 
-It is written in plain-old-Javascript.
+It is written in plain-old-Javascript. I have tested on Firefox Nightly 70.0a1 (2019-08-20) and Chromium 75.0.3738.0.
