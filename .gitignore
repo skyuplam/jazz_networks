@@ -1,2 +1,7 @@
 /target
 **/*.rs.bk
+
+# python
+.ipynb_checkpoints
+*.py[co]
+__pycache__
