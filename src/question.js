@@ -104,7 +104,7 @@ function setEndPoint(point) {
 }
 
 /**
- * Remove the split line from SVG
+ * Remove the split line Path element from SVG
  */
 function clearSplitLine() {
   // Clean up
@@ -115,26 +115,24 @@ function clearSplitLine() {
 }
 
 /**
- * Draw the split line on the SVG
+ * Update the split line Path attribute `d`
  */
-function drawSplitLine(color = 'red') {
-  clearSplitLine();
-
+function updateSplitLine(color = 'red') {
   if (splitPoints.length >= 2) {
-    const svgEl = getSVG();
-    const splitLine = createSVGPath(SPLITTER_ID);
-    const path = [
-      'M',
-      splitPoints[0].x,
-      splitPoints[0].y,
-      'L',
-      splitPoints[1].x,
-      splitPoints[1].y,
-      'Z',
-    ].join(' ');
-    splitLine.setAttribute('d', path);
-    splitLine.setAttribute('stroke', color);
-    svgEl.appendChild(splitLine);
+    const splitLine = document.getElementById(SPLITTER_ID);
+    if (splitLine) {
+      const path = [
+        'M',
+        splitPoints[0].x,
+        splitPoints[0].y,
+        'L',
+        splitPoints[1].x,
+        splitPoints[1].y,
+        'Z',
+      ].join(' ');
+      splitLine.setAttribute('d', path);
+      splitLine.setAttribute('stroke', color);
+    }
   }
 }
 
@@ -192,20 +190,27 @@ function onMouseDown(event) {
   const startPoint = getSVGPointFrom(event);
   // Capture the start point for the split line
   setStartPoint(startPoint);
+
+  // Add split line path element
+  const svgEl = getSVG();
+  if (svgEl) {
+    const splitLine = createSVGPath(SPLITTER_ID);
+    svgEl.appendChild(splitLine);
+  }
 }
 
 function onMouseMove(event) {
   // Update the end point of the split line and draw the line
-  // Only draw the line when it has enough points
+  // Only update the line when it has enough points
   if (splitPoints.length > 0) {
     const movingPoint = getSVGPointFrom(event);
     setEndPoint(movingPoint);
-    drawSplitLine();
+    updateSplitLine();
   }
 }
 
 function onMouseUp(event) {
-  // It is not necessary to show the split line at this stage
+  // Remove split line
   clearSplitLine();
   // Prepare the split line for testing against line intersections
   const endPoint = getSVGPointFrom(event);
